@@ -1,0 +1,22 @@
+CREATE DATABASE IF NOT EXISTS jpa_exam;
+USE jpa_exam;
+
+CREATE TABLE students (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    major VARCHAR(100)
+);
+
+CREATE TABLE categories (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE products (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2),
+    category_id BIGINT,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);
